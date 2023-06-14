@@ -92,7 +92,7 @@ public class Main {
                 perviy = perviy.substring(1,perviy.length()-1);
                 vtoroi = vtoroi.substring(1,vtoroi.length()-1);
                 if(perviy.indexOf(vtoroi)==-1)
-                    System.out.println(perviy);
+                    result = perviy;
                 if(perviy.indexOf(vtoroi)!=-1)
                 {
                     String nachalo = perviy.substring(0,perviy.indexOf(vtoroi));
@@ -108,8 +108,9 @@ public class Main {
 
     }
     void  outputData(String res){
-        if(res.length()>40)
+        if(res.length()>40){
             res = res.substring(0,40)+"...\"";
+        }
         System.out.println(res);
     }
     String sumStrings(String perviy, String vtoroi){
