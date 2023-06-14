@@ -1,13 +1,17 @@
+
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        Scanner sc = new Scanner(
-                System.in
-        );
+        Main calculator = new Main();
+        calculator.calculate();
+
+    }
+    void calculate() throws Exception {
+        String result="";
+        Scanner sc = new Scanner(System.in);
         System.out.println("Введите значение");
-        String viragenie = sc.next
-                        ();
+        String viragenie = sc.nextLine();
         int mestoznaka = -100;
         if (viragenie.indexOf("+") != -1) {
             mestoznaka = viragenie.indexOf("+");
@@ -35,19 +39,21 @@ public class Main {
                 throw new Exception("Слишком большие числа");
             if (znak.equals("+")) {
                 int c = a + b;
-                System.out.println(c);
+                result=Integer.toString(c);
             }
             if (znak.equals("-")) {
                 int c = a - b;
-                System.out.println(c);
+                result=Integer.toString(c);
             }
             if (znak.equals("*")) {
                 int c = a * b;
-                System.out.println(c);
+
+                result=Integer.toString(c);
             }
             if (znak.equals("/")) {
                 int c = a / b;
-                System.out.println(c);
+
+                result=Integer.toString(c);
             }
         }
 
@@ -57,7 +63,8 @@ public class Main {
                 String c="";
                 for(int i=0;i<b;i++)
                     c=c+perviy.substring(1,perviy.length()-1);
-                System.out.println("\""+c+"\"");
+
+                result="\""+c+"\"";
             }
             if (znak.equals("-")) {
                 throw  new Exception("Нельзя вычесть число из строки");
@@ -70,16 +77,16 @@ public class Main {
             if (znak.equals("/")) {
                 int l = perviy.length()/b;
                 String c = perviy.substring(1,l);
-                System.out.println("\""+c+"\"");
+
+                result="\""+c+"\"";
+
 
             }
         }
         if(perviy.indexOf("\"")!=-1 && vtoroi.indexOf("\"")!=-1)
         {
             if (znak.equals("+")){
-                perviy = perviy.substring(1,perviy.length()-1);
-                vtoroi = vtoroi.substring(1,vtoroi.length()-1);
-                System.out.println("\""+perviy+vtoroi+"\"");
+                result = sumStrings(perviy,vtoroi);
             }
             if (znak.equals("-")){
                 perviy = perviy.substring(1,perviy.length()-1);
@@ -90,12 +97,25 @@ public class Main {
                 {
                     String nachalo = perviy.substring(0,perviy.indexOf(vtoroi));
                     String konec = perviy.substring(perviy.indexOf(vtoroi)+vtoroi.length());
-                    System.out.println("\""+nachalo+konec+"\"");
+
+                    result="\""+nachalo+konec+"\"";
                 }
 
             }
         }
+        outputData(result);
 
 
+    }
+    void  outputData(String res){
+        if(res.length()>40)
+            res = res.substring(0,40)+"...\"";
+        System.out.println(res);
+    }
+    String sumStrings(String perviy, String vtoroi){
+        perviy = perviy.substring(1,perviy.length()-1);
+        vtoroi = vtoroi.substring(1,vtoroi.length()-1);
+
+        return "\""+perviy+vtoroi+"\"";
     }
 }
