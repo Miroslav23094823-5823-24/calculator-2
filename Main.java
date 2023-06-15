@@ -85,7 +85,7 @@ public class Main {
         }
         if(perviy.indexOf("\"")!=-1 && vtoroi.indexOf("\"")!=-1)
         {
-            if (znak.equals("+")){
+                if (znak.equals("+")){
                 result = sumStrings(perviy,vtoroi);
             }
             if (znak.equals("-")){
@@ -102,6 +102,10 @@ public class Main {
                 }
 
             }
+            if(perviy.length()>12||vtoroi.length()>12){
+                throw new Exception("Слишком много символов");
+            }
+
         }
         outputData(result);
 
